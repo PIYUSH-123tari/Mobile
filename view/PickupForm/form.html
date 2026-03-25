@@ -9,7 +9,7 @@
 <body>
   <!-- Header with Back Button + Logo -->
   <div class="form-header">
-    <button class="back-btn" onclick="window.location.href='../Homepage/hp.html'" id="backBtn">
+    <button class="back-btn" onclick="window.location.href='../Homepage/index.html'" id="backBtn">
       ← Back to Home
     </button>
     <div class="logo-area">
@@ -75,29 +75,36 @@
       >
 
       <label>Waste Image</label>
+
+      <!-- Desktop: standard file input -->
       <input
         type="file"
         name="image"
         id="wasteImageInput"
         accept="image/*"
+        class="desktop-file-input"
       >
 
-      <!-- Mobile-only camera button -->
+      <!-- Mobile: camera OR gallery options -->
       <div class="mobile-camera-section" id="mobileCameraSection">
-        <button type="button" id="openCameraBtn" class="camera-btn">
-          📷 Open Camera
-        </button>
-        <span class="camera-note">📱 Mobile: Take a photo directly</span>
-        <input
-          type="file"
-          id="cameraCapture"
-          accept="image/*"
-          capture="environment"
-          style="display:none"
-        >
+        <div class="mobile-upload-options">
+          <button type="button" id="openCameraBtn" class="camera-btn">
+            📷 Take Photo
+          </button>
+          <button type="button" id="openGalleryBtn" class="gallery-btn">
+            🖼️ Choose from Gallery
+          </button>
+        </div>
+        <span class="camera-note">📱 Tap to capture or select an image</span>
+
+        <!-- Hidden inputs for camera / gallery -->
+        <input type="file" id="cameraCapture" accept="image/*" capture="environment" style="display:none">
+        <input type="file" id="galleryCapture" accept="image/*" style="display:none">
+
+        <!-- Preview -->
         <div id="cameraPreview" class="camera-preview" style="display:none">
           <img id="previewImg" src="" alt="Preview">
-          <button type="button" id="retakeBtn" class="retake-btn">🔄 Retake</button>
+          <button type="button" id="retakeBtn" class="retake-btn">🔄 Change Image</button>
         </div>
       </div>
 

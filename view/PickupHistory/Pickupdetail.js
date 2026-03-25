@@ -52,7 +52,7 @@ function renderPending() {
 function renderAssigned() {
   detailContainer.innerHTML = `<p class="loading-text">Loading assignment details...</p>`;
 
-  fetch(`http://localhost:5000/pickupHistory/assignment/${pickup.pickupRequest_id}`, {
+  fetch(`/pickupHistory/assignment/${pickup.pickupRequest_id}`, {
     headers: { "Authorization": "Bearer " + token }
   })
     .then(res => res.json())
@@ -65,7 +65,7 @@ function renderAssigned() {
       const agent = data.agent;
       // Photo served directly from Admin server at port 3500 (already working)
       const photoUrl = agent.passport_photo
-        ? `http://localhost:3500/${agent.passport_photo.replace(/\\/g, "/")}`
+        ? `/${agent.passport_photo.replace(/\\/g, "/")}`
         : null;
 
       detailContainer.innerHTML = `
@@ -125,7 +125,7 @@ function renderAssigned() {
 function renderCollected() {
   detailContainer.innerHTML = `<p class="loading-text">Loading collected details...</p>`;
 
-  fetch(`http://localhost:5000/pickupHistory/collected/${pickup.pickupRequest_id}`, {
+  fetch(`/pickupHistory/collected/${pickup.pickupRequest_id}`, {
     headers: { "Authorization": "Bearer " + token }
   })
     .then(res => res.json())
@@ -137,7 +137,7 @@ function renderCollected() {
 
       const agent = data.agent;
       const photoUrl = agent.passport_photo
-        ? `http://localhost:3500/${agent.passport_photo.replace(/\\/g, "/")}`
+        ? `/${agent.passport_photo.replace(/\\/g, "/")}`
         : null;
 
       detailContainer.innerHTML = `

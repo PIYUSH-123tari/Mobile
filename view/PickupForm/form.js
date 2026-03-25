@@ -9,7 +9,7 @@ const editingPickupId = sessionStorage.getItem("editingPickupId");
 
 async function loadCategories(selectedId = null) {
   try {
-    const res = await fetch("http://localhost:5000/category/all");
+    const res = await fetch("/category/all");
     const categories = await res.json();
 
     categorySelect.innerHTML = `<option value="">Select Category</option>`;
@@ -108,8 +108,8 @@ if (editData) {
 
 // 🔁 Decide URL + METHOD
 const url = editingPickupId
-  ? `http://localhost:5000/pickup/update/${editingPickupId}`
-  : "http://localhost:5000/pickup/create";
+  ? `/pickup/update/${editingPickupId}`
+  : "/pickup/create";
 
 
 const method = editingPickupId ? "PUT" : "POST";
@@ -155,10 +155,12 @@ const useLocationBtn = document.getElementById("useLocationBtn");
 const pickupAddressField = document.getElementById("pickupAddress");
 
 
-// ===== MOBILE CAMERA FUNCTIONALITY =====
+// ===== MOBILE CAMERA & GALLERY FUNCTIONALITY =====
 const mobileCameraSection = document.getElementById("mobileCameraSection");
 const openCameraBtn = document.getElementById("openCameraBtn");
+const openGalleryBtn = document.getElementById("openGalleryBtn");
 const cameraCapture = document.getElementById("cameraCapture");
+const galleryCapture = document.getElementById("galleryCapture");
 const cameraPreview = document.getElementById("cameraPreview");
 const previewImg = document.getElementById("previewImg");
 const retakeBtn = document.getElementById("retakeBtn");
@@ -185,9 +187,13 @@ openCameraBtn.addEventListener("click", () => {
   cameraCapture.click();
 });
 
-// When photo is taken — inject it into the real file input & show preview
-cameraCapture.addEventListener("change", () => {
-  const file = cameraCapture.files[0];
+// Open gallery
+openGalleryBtn.addEventListener("click", () => {
+  galleryCapture.click();
+});
+
+// Shared handler: show preview and transfer file to real input
+function handleImageSelected(file, sourceLabel) {
   if (!file) return;
 
   // Transfer file to the real image input via DataTransfer
@@ -200,21 +206,46 @@ cameraCapture.addEventListener("change", () => {
   reader.onload = (e) => {
     previewImg.src = e.target.result;
     cameraPreview.style.display = "flex";
-    openCameraBtn.textContent = "✅ Photo Captured";
-    openCameraBtn.style.background = "#157a3f";
+    openCameraBtn.textContent = sourceLabel === "camera" ? "✅ Photo Captured" : "📷 Take Photo";
+    openGalleryBtn.textContent = sourceLabel === "gallery" ? "✅ Image Selected" : "🖼️ Choose from Gallery";
+    if (sourceLabel === "camera") {
+      openCameraBtn.style.background = "#157a3f";
+      openCameraBtn.style.color = "#fff";
+      openGalleryBtn.style.background = "";
+      openGalleryBtn.style.color = "";
+    } else {
+      openGalleryBtn.style.background = "#157a3f";
+      openGalleryBtn.style.color = "#fff";
+      openCameraBtn.style.background = "";
+      openCameraBtn.style.color = "";
+    }
   };
   reader.readAsDataURL(file);
+}
+
+// When photo is taken via camera
+cameraCapture.addEventListener("change", () => {
+  handleImageSelected(cameraCapture.files[0], "camera");
 });
 
-// Retake
+// When image is selected from gallery
+galleryCapture.addEventListener("change", () => {
+  handleImageSelected(galleryCapture.files[0], "gallery");
+});
+
+// Change Image (reset)
 retakeBtn.addEventListener("click", () => {
   cameraCapture.value = "";
+  galleryCapture.value = "";
   wasteImageInput.value = "";
   previewImg.src = "";
   cameraPreview.style.display = "none";
-  openCameraBtn.textContent = "📷 Open Camera";
-  openCameraBtn.style.background = "#1b8f4a";
-  cameraCapture.click();
+  openCameraBtn.textContent = "📷 Take Photo";
+  openCameraBtn.style.background = "";
+  openCameraBtn.style.color = "";
+  openGalleryBtn.textContent = "🖼️ Choose from Gallery";
+  openGalleryBtn.style.background = "";
+  openGalleryBtn.style.color = "";
 });
 
 // ===== GEOLOCATION =====

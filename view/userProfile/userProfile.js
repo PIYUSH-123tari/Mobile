@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const photoInput = document.getElementById("photoInput");
 
   // FETCH USER
-  const response = await fetch(`http://localhost:5000/userProfile/${userId}`, {
+  const response = await fetch(`/userProfile/${userId}`, {
     headers: { "Authorization": "Bearer " + token }
   });
   const user = await response.json();
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   rewardBalanceInput.value = `₹${(user.reward_balance || 0).toFixed(2)}`;
 
   // FETCH ALL REGIONS
-  const regionRes = await fetch("http://localhost:5000/users/regions");
+  const regionRes = await fetch("/users/regions");
   const regions = await regionRes.json();
 
   regionSelect.innerHTML = "";
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (user.photo) {
     document.querySelector(".avatar").src =
-      `http://localhost:5000/uploads/${user.photo}`;
+      `/uploads/${user.photo}`;
   }
 
   // SET READONLY INITIALLY
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       formData.append("photo", photoInput.files[0]);
     }
 
-    const res = await fetch(`http://localhost:5000/userProfile/${userId}`, {
+    const res = await fetch(`/userProfile/${userId}`, {
       method: "PUT",
       headers: {
         "Authorization": "Bearer " + token
@@ -242,5 +242,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 backBtn.addEventListener("click", () => {
-  window.location.href = "../Homepage/hp.html";
+  window.location.href = "../Homepage/index.html";
 });

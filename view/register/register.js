@@ -1,7 +1,7 @@
 // ✅ LOAD REGIONS FROM BACKEND
 window.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch("http://localhost:5000/users/regions");
+    const response = await fetch("/users/regions");
     const regions = await response.json();
 
     const regionSelect = document.getElementById("region_Id");
@@ -160,7 +160,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const authData = { email, password };
 
   try {
-    const response = await fetch("http://localhost:5000/users/login", {
+    const response = await fetch("/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(authData)
@@ -179,7 +179,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       sessionStorage.setItem("region_name", data.user.region_name);
 
       setTimeout(() => {
-        window.location.href = "../Homepage/hp.html";
+        window.location.href = "../Homepage/index.html";
       }, 2000);
 
     } else {
@@ -248,7 +248,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
   const userData = { name, email, phone, password, region_Id };
 
   try {
-    const response = await fetch("http://localhost:5000/users/register", {
+    const response = await fetch("/users/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)

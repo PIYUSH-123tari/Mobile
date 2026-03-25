@@ -36,7 +36,7 @@ if (userId) {
     const token = sessionStorage.getItem("token");
     sessionStorage.clear();
 
-    const response = await fetch("http://localhost:5000/users/logout", {
+    const response = await fetch("/users/logout", {
       method: "GET",
       headers: {
         "Authorization": "Bearer " + token

@@ -4,7 +4,8 @@ const whiteList=['https://www.google.com',
   'http://localhost:5500',
   'http://127.0.0.1:5000',
   'http://localhost:3500',
-'http://127.0.0.1:3500'];
+  'http://127.0.0.1:3500',
+  'https://mobile-1-7i8e.onrender.com'];
 const corsOptions={
   
   origin:(origin,callback)=>{

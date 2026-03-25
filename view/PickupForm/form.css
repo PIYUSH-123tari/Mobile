@@ -229,27 +229,45 @@ input[type="file"] {
   margin-bottom: 18px;
 }
 
+.mobile-upload-options {
+  display: flex;
+  gap: 10px;
+}
+
 .camera-note {
   font-size: 0.78rem;
   color: #666;
   font-style: italic;
+  text-align: center;
 }
 
-.camera-btn {
-  width: 100%;
-  padding: 13px;
+.camera-btn, .gallery-btn {
+  flex: 1;
+  padding: 12px 10px;
   border-radius: 12px;
-  border: 2px dashed #1b8f4a;
-  background: #f0faf4;
-  color: #1b8f4a;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
+}
+
+.camera-btn {
+  border: 2px dashed #1b8f4a;
+  background: #f0faf4;
+  color: #1b8f4a;
+}
+
+.gallery-btn {
+  border: 2px solid #1b8f4a;
+  background: #fff;
+  color: #1b8f4a;
 }
 
 .camera-btn:hover,
-.camera-btn:active {
+.camera-btn:active,
+.gallery-btn:hover,
+.gallery-btn:active {
   background: #1b8f4a;
   color: #fff;
 }
@@ -285,9 +303,10 @@ input[type="file"] {
   background: #c0392b;
 }
 
-/* On mobile, hide the default file input (camera replaces it) */
+/* On mobile, hide the default file input (camera/gallery replaces it) */
 @media (max-width: 768px) {
-  input[type="file"][name="image"] {
+  input[type="file"][name="image"],
+  .desktop-file-input {
     display: none;
   }
 }

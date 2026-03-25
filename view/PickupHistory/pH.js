@@ -208,7 +208,7 @@ if (!userId) {
 /* ================================================
    FETCH PICKUP HISTORY
    ================================================ */
-fetch(`http://localhost:5000/pickupHistory/user/${userId}`, {
+fetch(`/pickupHistory/user/${userId}`, {
   headers: { "Authorization": "Bearer " + token }
 })
   .then(res => res.json())
@@ -228,7 +228,7 @@ fetch(`http://localhost:5000/pickupHistory/user/${userId}`, {
 
       card.innerHTML = `
         <div class="card-clickable">
-          ${pickup.image ? `<img src="http://localhost:5000${pickup.image}" />` : ""}
+          ${pickup.image ? `<img src="${pickup.image}" />` : ""}
 
           <p><b>Created At:</b> ${new Date(pickup.createdAt).toLocaleString()}</p>
           <p><b>User Phone:</b> ${pickup.userPhone}</p>
@@ -260,7 +260,7 @@ fetch(`http://localhost:5000/pickupHistory/user/${userId}`, {
       clickable.style.cursor = "pointer";
       clickable.addEventListener("click", () => {
         sessionStorage.setItem("viewPickup", JSON.stringify(pickup));
-        window.location.href = "pickupDetail.html";
+        window.location.href = "Pickupdetail.html";
       });
 
       pickupContainer.appendChild(card);
@@ -306,7 +306,7 @@ function deletePickup(pickupId) {
     cancelText: "Cancel",
     confirmColor: "#c62828",
     onConfirm: () => {
-      fetch(`http://localhost:5000/pickup/delete/${pickupId}`, {
+      fetch(`/pickup/delete/${pickupId}`, {
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token }
       })
