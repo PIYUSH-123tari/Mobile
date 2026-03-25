@@ -1,0 +1,338 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  background: #1b5e20;
+}
+
+.loading-text {
+  text-align: center;
+  color: #666;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+/* ── Base Card ─────────────────────────────────────────────────────────────── */
+.detail-card {
+  background: #fff;
+  max-width: 600px;
+  margin: 15px auto;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.detail-card h2 {
+  font-size: 22px;
+  margin: 12px 0 8px;
+  color: #1a1a1a;
+}
+
+.detail-card h3 {
+  font-size: 16px;
+  color: #555;
+  margin: 20px 0 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.info-section {
+  text-align: left;
+  margin-top: 18px;
+}
+
+.info-section p {
+  margin: 7px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ── Status Badge ──────────────────────────────────────────────────────────── */
+.status-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 10px 0 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ── PENDING ───────────────────────────────────────────────────────────────── */
+.pending-card {
+  border-top: 5px solid #fb8c00;
+}
+
+.pending-icon {
+  font-size: 52px;
+  margin-bottom: 6px;
+}
+
+.pending-badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.pending-sub {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.pending-note {
+  margin-top: 22px;
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+}
+
+/* ── ASSIGNED ──────────────────────────────────────────────────────────────── */
+.assigned-card {
+  border-top: 5px solid #1565c0;
+}
+
+.assigned-header {
+  margin-bottom: 10px;
+}
+
+.assigned-icon {
+  font-size: 48px;
+}
+
+.assigned-badge {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.agent-section {
+  text-align: left;
+  margin-top: 18px;
+}
+
+.agent-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 10px;
+}
+
+.agent-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1565c0;
+  flex-shrink: 0;
+}
+
+.agent-photo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.agent-info {
+  flex: 1;
+}
+
+.agent-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+/* ── COLLECTED ─────────────────────────────────────────────────────────────── */
+.collected-card {
+  border-top: 5px solid #2e7d32;
+}
+
+.collected-icon {
+  font-size: 56px;
+  margin-bottom: 6px;
+}
+
+.collected-badge {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.collected-note {
+  margin-top: 22px;
+  font-size: 14px;
+  color: #2e7d32;
+  background: #f1f8e9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* ── Agent Photo clickable ─────────────────────────────────────────────────── */
+.agent-photo {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.agent-photo:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(21, 101, 192, 0.35);
+}
+
+/* ── Image Modal ───────────────────────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-box img {
+  max-width: 80vw;
+  max-height: 75vh;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: #c62828;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.modal-close:hover {
+  background: #b71c1c;
+}
+
+/* ===== RESPONSIVE — MOBILE ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 14px;
+  }
+
+  .detail-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .detail-card h2 {
+    font-size: 18px;
+  }
+
+  .detail-card h3 {
+    font-size: 14px;
+  }
+
+  .info-section p {
+    font-size: 13px;
+  }
+
+  .status-badge {
+    font-size: 12px;
+    padding: 5px 14px;
+  }
+
+  .pending-icon,
+  .collected-icon {
+    font-size: 40px;
+  }
+
+  .assigned-icon {
+    font-size: 36px;
+  }
+
+  .agent-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .agent-photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .agent-photo-placeholder {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  .agent-name {
+    font-size: 16px;
+  }
+
+  .collected-note {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .pending-note {
+    font-size: 12px;
+  }
+
+  .back-btn {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}

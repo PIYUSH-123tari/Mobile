@@ -1,0 +1,299 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+}
+
+/* NAVBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: #0f7a4a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo-text span {
+  color: #0f7a4a;
+}
+
+.back-btn {
+  margin-left: 0;
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 1px solid #0f7a4a;
+  background: white;
+  color: #0f7a4a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.back-btn:hover {
+  background: #0f7a4a;
+  color: white;
+}
+
+/* PROFILE */
+.profile-page {
+  padding: 40px 60px;
+}
+
+.profile-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.profile-subtitle {
+  text-align: center;
+  margin-top: 8px;
+  color: gray;
+}
+
+.profile-card {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* LEFT */
+.left-box {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #16a34a;
+  object-fit: cover;
+}
+
+.upload-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: #0f7a4a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background: #0b5f39;
+}
+
+.support-text {
+  margin-top: 10px;
+  color: gray;
+  font-size: 13px;
+}
+
+/* RIGHT */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0f7a4a;
+  box-shadow: 0 0 0 3px rgba(15, 122, 74, 0.12);
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+/* Reward Balance field */
+.reward-input {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  cursor: not-allowed;
+  letter-spacing: 0.3px;
+}
+
+/* EDIT BUTTON */
+.edit-row {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.edit-btn {
+  padding: 14px 40px;
+  border-radius: 14px;
+  border: none;
+  background: #0f7a4a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-btn:hover {
+  background: #0b5f39;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE — TABLET ===== */
+@media (max-width: 900px) {
+  .profile-page {
+    padding: 30px 24px;
+  }
+
+  .profile-card {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+  }
+
+  .profile-title {
+    font-size: 26px;
+  }
+}
+
+/* ===== RESPONSIVE — MOBILE ===== */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .back-btn {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  .profile-page {
+    padding: 20px 14px;
+  }
+
+  .profile-title {
+    font-size: 22px;
+  }
+
+  .profile-subtitle {
+    font-size: 13px;
+  }
+
+  .profile-card {
+    padding: 16px;
+    gap: 18px;
+    border-radius: 14px;
+  }
+
+  .left-box {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}

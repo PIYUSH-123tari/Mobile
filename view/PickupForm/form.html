@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickup Request</title>
+  <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+  <!-- Header with Back Button + Logo -->
+  <div class="form-header">
+    <button class="back-btn" onclick="window.location.href='../Homepage/hp.html'" id="backBtn">
+      ← Back to Home
+    </button>
+    <div class="logo-area">
+      <div class="logo-icon">♻</div>
+      <div class="logo-text">ECO<span>Loop</span></div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h2 id="formHeading">Create Pickup Request</h2>
+
+    <form id="pickupForm" enctype="multipart/form-data">
+
+      <label>additional Phone Number</label>
+      <input
+        type="tel"
+        name="additional_phone_no"
+        placeholder="Enter your additional phone number"
+        
+      >
+
+      <label>Select Category</label>
+<select name="category" id="categorySelect" required>
+  <option value="">Loading categories...</option>
+</select>
+
+<label>Describe Your E-Waste</label>
+<textarea
+  name="waste_description"
+  placeholder="Describe item condition, quantity, brand, damage etc."
+  required
+></textarea>
+
+      <label>Estimated Weight (kg)</label>
+      <input
+        type="number"
+        name="estimated_weight"
+        placeholder="Approx weight in kg"
+        required
+      >
+
+   <label>Pickup Address</label>
+
+<div class="address-wrapper">
+  <textarea
+    name="pickup_address"
+    id="pickupAddress"
+    placeholder="Enter complete pickup address OR use options below"
+    required
+  ></textarea>
+
+  <button type="button" id="useLocationBtn" class="location-btn">
+    📍 Use My Location
+  </button>
+</div>
+
+
+      <label>Preferred Date</label>
+      <input
+        type="date"
+        name="preferred_date"
+        required
+      >
+
+      <label>Waste Image</label>
+      <input
+        type="file"
+        name="image"
+        accept="image/*"
+      >
+
+      <button type="submit" class="submit-btn">Submit Pickup</button>
+    </form>
+  </div>
+
+  <script src="../authGuard.js"></script>
+  <script src="form.js"></script>
+</body>
+</html>

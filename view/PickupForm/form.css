@@ -1,0 +1,240 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== PAGE ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding-top: 20px; /* ⬅ ensures top spacing */
+  background: linear-gradient(135deg, #b2d1b3, #8bc08d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== HEADER (Back + Logo) ===== */
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+}
+
+/* ===== BRAND / LOGO ===== */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: #1b8f4a;
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #222;
+}
+
+.logo-text span {
+  color: #1b8f4a;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #2e7d32;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+.back-btn:hover {
+  background: #1b8f4a;
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+/* ===== FORM CARD ===== */
+/* ===== FORM CARD ===== */
+.form-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px; /* 🔹 slightly wider */
+  padding: 32px 34px;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+}
+
+/* ===== HEADING ===== */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1b8f4a;
+}
+
+/* ===== LABELS ===== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ===== INPUTS & TEXTAREA ===== */
+input,
+textarea {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1.5px solid #dcdcdc;
+  font-size: 0.95rem;
+  transition: 0.25s;
+  background: #fff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1b8f4a;
+  box-shadow: 0 0 0 3px rgba(27, 143, 74, 0.15);
+}
+
+/* ===== TEXTAREA ===== */
+textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* ===== FILE INPUT ===== */
+input[type="file"] {
+  padding: 10px;
+  background: #f7faf8;
+  cursor: pointer;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #1b8f4a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #157a3f;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .form-container {
+    margin: 0 16px 32px;
+    padding: 26px 22px;
+  }
+}
+
+.address-wrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.location-btn {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #1b8f4a;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.location-btn:hover {
+  background: #157a3f;
+  transform: scale(1.05);
+}
+
+/* ===== CATEGORY SELECT ===== */
+#categorySelect {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1.5px solid #dcdcdc;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: 0.25s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#categorySelect:focus {
+  outline: none;
+  border-color: #1b8f4a;
+  box-shadow: 0 0 0 3px rgba(27, 143, 74, 0.15);
+}
+
+/* ===== E-WASTE TEXTAREA ===== */
+textarea[name="waste_description"] {
+  resize: vertical;
+  min-height: 90px;
+  max-height: 200px;
+  background: #f7faf8;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 13px 14px;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  transition: 0.25s;
+}
+
+textarea[name="waste_description"]:focus {
+  outline: none;
+  border-color: #1b8f4a;
+  box-shadow: 0 0 0 3px rgba(27, 143, 74, 0.15);
+}

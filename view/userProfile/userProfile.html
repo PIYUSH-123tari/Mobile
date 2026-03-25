@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - ECOloop</title>
+  <link rel="stylesheet" href="userProfile.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="topbar">
+    <button id="backBtn" class="back-btn">← Back</button>
+    <div class="logo-area">
+      <div class="logo-icon">♻</div>
+      <div class="logo-text">Eco<span>Loop</span></div>
+    </div>
+    <!-- <div class="nav-right">
+      <button class="ch-pass">Change Password</button>
+    </div> -->
+  </header>
+
+  <!-- PROFILE SECTION -->
+  <main class="profile-page">
+    <h1 class="profile-title">My Profile</h1>
+    <p class="profile-subtitle">Update your details and manage your ECOloop account.</p>
+
+    <div class="profile-card">
+
+      <!-- LEFT SIDE -->
+      <div class="left-box">
+        <img src="https://i.ibb.co/2yq1RjQ/user.png" class="avatar" alt="Profile">
+        <p class="support-text">Supported: JPG, PNG, JPEG</p>
+        <input type="file" id="photoInput" style="display:none;">
+        <button class="upload-btn" id="uploadBtn" style="display:none;">Upload Photo</button>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-box">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-group">
+            <label>Region</label>
+            <input type="text" id="regionText" placeholder="Region">
+            <select id="regionSelect" style="display:none;"></select>
+          </div>
+
+          <!-- ✅ NEW: Reward Balance — always read-only -->
+          <div class="form-group">
+            <label>Reward Balance (₹)</label>
+            <input
+              type="text"
+              id="rewardBalanceInput"
+              placeholder="₹0.00"
+              readonly
+              class="reward-input"
+            >
+          </div>
+
+        </div>
+
+        <!-- EDIT / SAVE BUTTONS -->
+        <div class="edit-row">
+          <button class="edit-btn" id="editBtn">Edit Profile</button>
+          <button class="edit-btn" id="saveBtn" style="display:none;">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../authGuard.js"></script>
+  <script src="userProfile.js"></script>
+</body>
+</html>

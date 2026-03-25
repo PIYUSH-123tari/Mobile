@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoLoop - Login & Sign Up</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+  <div class="top-brand">
+  <div class="eco-icon">♻</div>
+  <span class="eco-text">Eco<span>Loop</span></span>
+</div>
+  <div class="container">
+   
+   <div class="auth-tabs">
+  <button type="button" onclick="toggleForm('login')" id="loginTab">Login</button>
+  <button type="button" onclick="toggleForm('signup')" id="signupTab">Register</button>
+</div>
+    <div class="form-container">
+      <!-- Login Form -->
+     
+
+      <form id="loginForm" class="form active">
+         <h1>Welcome Back!</h1>
+      <p class="subtext">Sign in to your EcoLoop account</p>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+         <div class="password-box">
+  <input type="password" id="loginPassword" placeholder="Password" required>
+  <span class="eye" onclick="togglePassword('loginPassword', this)">👁</span>
+</div>
+
+        <button type="submit">Login</button>
+        
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signupForm" class="form">
+       <h1>Create Account</h1>
+      <p class="subtext">Join ECOLoop and start recycling today</p>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+        <input type="tel" id="phoneNo" placeholder="phoneNo" required>
+         <div class="password-box">
+  <input type="password" id="registerPassword" placeholder="Create Password" required>
+  <span class="eye" onclick="togglePassword('registerPassword', this)">👁</span>
+</div>
+<div class="password-rules" id="passwordRules">
+  <p id="lengthRule">❌ At least 8 characters</p>
+  <p id="upperRule">❌ At least 1 uppercase letter</p>
+  <p id="lowerRule">❌ At least 1 lowercase letter</p>
+  <p id="numberRule">❌ At least 1 number</p>
+  <p id="specialRule">❌ At least 1 special character</p>
+</div>
+
+
+
+          
+         <select name="region_Id" id="region_Id" required>
+  <option value="" disabled selected>Select your region</option>
+</select>
+        <button type="submit">Sign Up</button>
+       
+      </form>
+      <div id="toastContainer"></div>
+    </div>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

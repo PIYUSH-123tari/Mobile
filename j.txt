@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - ECOloop</title>
+  <link rel="stylesheet" href="userProfile.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="topbar">
+    <div class="logo-area">
+      <div class="logo-icon">♻</div>
+      <div class="logo-text">ECO<span>Loop</span></div>
+    </div>
+
+ 
+
+    <div class="nav-right">
+      
+      <button class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <!-- PROFILE SECTION -->
+  <main class="profile-page">
+    <h1 class="profile-title">My Profile</h1>
+    <p class="profile-subtitle">Update your details and manage your ECOloop account.</p>
+
+    <div class="profile-card">
+
+      <!-- LEFT SIDE -->
+      <div class="left-box">
+        <img src="https://i.ibb.co/2yq1RjQ/user.png" class="avatar" alt="Profile">
+        <!-- <button class="upload-btn">Upload Photo</button> -->
+        <p class="support-text">Supported: JPG, PNG, JPEG</p>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-box">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter password">
+          </div>
+
+          <div class="form-group">
+            <label>Select Your Region</label>
+            <select>
+              <option>Select your region</option>
+              <option>North Goa</option>
+              <option>South Goa</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Address</label>
+            <textarea placeholder="Enter your address"></textarea>
+          </div>
+
+        </div>
+
+        <!-- ONLY EDIT BUTTON -->
+        <div class="edit-row">
+          <button class="edit-btn">Edit Profile</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+<script src="userProfile.js"></script>
+
+</body>
+</html> this is userProfile.html  then:                                                                               /* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+}
+
+/* NAVBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: #0f7a4a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo-text span {
+  color: #0f7a4a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.logout-btn {
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+/* PROFILE */
+.profile-page {
+  padding: 40px 60px;
+}
+
+.profile-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.profile-subtitle {
+  text-align: center;
+  margin-top: 8px;
+  color: gray;
+}
+
+.profile-card {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* LEFT */
+.left-box {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #16a34a;
+  object-fit: cover;
+}
+
+.upload-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: #0f7a4a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.support-text {
+  margin-top: 10px;
+  color: gray;
+  font-size: 13px;
+}
+
+/* RIGHT */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+/* EDIT BUTTON */
+.edit-row {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.edit-btn {
+  padding: 14px 40px;
+  border-radius: 14px;
+  border: none;
+  background: #0f7a4a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-btn:hover {
+  background: #0b5f39;
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+  }
+} then comes userProfile.css                                                                                                ,then:                                                                                                                           document.addEventListener("DOMContentLoaded", async () => {
+
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    alert("User not logged in");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:5000/users/${userId}`);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch user data");
+    }
+
+    const user = await response.json();
+
+    // Fill form fields
+    document.querySelector("input[type='text']").value = user.name || "";
+    document.querySelector("input[type='email']").value = user.email || "";
+    document.querySelector("input[type='tel']").value = user.phone || "";
+    document.querySelector("select").value = user.region_Id || "";
+
+    // Show photo if exists
+    if (user.photo) {
+      document.querySelector(".avatar").src =
+        `http://localhost:5000/uploads/${user.photo}`;
+    }
+
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+  }
+
+});
+then this is userProfile.js this is frontend part... then server part..                                 const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  userId:{
+    type:String,
+    required:true,
+    unique: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  phone: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  region_Id: {
+  type: String,
+  required: true
+},
+photo: {
+  type: String,
+  default: null
+},
+  reward_points: { type: Number, default: 0 },
+  created_at: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model("User", userSchema);
+this is User.js code in model folder not models folder name is model.. then:                   const express = require("express");
+const connectDB = require("./config/db");
+const cors=require("cors");
+
+const corsOptions=require("./config/corsOptions");
+
+const app = express();
+connectDB();
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+const fs = require("fs");
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
+
+app.use("/users", require("./router/userRoutes"));
+app.use("/uploads", express.static("uploads"));
+app.use("/pickup", require("./router/pickupRoutes"));
+app.use("/pickupHistory", require("./router/pickupHistoryRoutes"));
+app.use("/pickup/update", require("./router/pickupUpdateRoutes"));
+app.use("/pickup/delete", require("./router/pickupDeleteRoutes"));
+app.use("/uploads", express.static("uploads"));
+
+
+
+
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
+
+// reward_points: { type: Number, default: 0 },
+// created_at: { type: Date, default: Date.now }this is server.js code,                                                  
