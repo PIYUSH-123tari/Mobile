@@ -1,8 +1,8 @@
-/users/*           https://your-ecoloop-backend.onrender.com/users/:splat           200
-/pickup/*          https://your-ecoloop-backend.onrender.com/pickup/:splat          200
-/pickupHistory/*   https://your-ecoloop-backend.onrender.com/pickupHistory/:splat   200
-/userProfile/*     https://your-ecoloop-backend.onrender.com/userProfile/:splat     200
-/category/*        https://your-ecoloop-backend.onrender.com/category/:splat        200
-/reward/*          https://your-ecoloop-backend.onrender.com/reward/:splat          200
-/uploads/*         https://your-ecoloop-backend.onrender.com/uploads/:splat         200
+/users/*           https://ecoloopbackend-farj.onrender.com/users/:splat           200
+/pickup/*          https://ecoloopbackend-farj.onrender.com/pickup/:splat          200
+/pickupHistory/*   https://ecoloopbackend-farj.onrender.com/pickupHistory/:splat   200
+/userProfile/*     https://ecoloopbackend-farj.onrender.com/userProfile/:splat     200
+/category/*        https://ecoloopbackend-farj.onrender.com/category/:splat        200
+/reward/*          https://ecoloopbackend-farj.onrender.com/reward/:splat          200
+/uploads/*         https://ecoloopbackend-farj.onrender.com/uploads/:splat         200
 /*                 /Homepage/index.html                                             200
