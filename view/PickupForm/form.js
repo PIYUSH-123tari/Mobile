@@ -154,8 +154,71 @@ document.getElementById("pickupForm").addEventListener("submit", async (e) => {
 const useLocationBtn = document.getElementById("useLocationBtn");
 const pickupAddressField = document.getElementById("pickupAddress");
 
-useLocationBtn.addEventListener("click", () => {
 
+// ===== MOBILE CAMERA FUNCTIONALITY =====
+const mobileCameraSection = document.getElementById("mobileCameraSection");
+const openCameraBtn = document.getElementById("openCameraBtn");
+const cameraCapture = document.getElementById("cameraCapture");
+const cameraPreview = document.getElementById("cameraPreview");
+const previewImg = document.getElementById("previewImg");
+const retakeBtn = document.getElementById("retakeBtn");
+const wasteImageInput = document.getElementById("wasteImageInput");
+
+// Show camera section only on mobile
+function isMobile() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function updateCameraVisibility() {
+  if (isMobile()) {
+    mobileCameraSection.style.display = "flex";
+  } else {
+    mobileCameraSection.style.display = "none";
+  }
+}
+
+updateCameraVisibility();
+window.addEventListener("resize", updateCameraVisibility);
+
+// Open camera
+openCameraBtn.addEventListener("click", () => {
+  cameraCapture.click();
+});
+
+// When photo is taken — inject it into the real file input & show preview
+cameraCapture.addEventListener("change", () => {
+  const file = cameraCapture.files[0];
+  if (!file) return;
+
+  // Transfer file to the real image input via DataTransfer
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  wasteImageInput.files = dt.files;
+
+  // Show preview
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    previewImg.src = e.target.result;
+    cameraPreview.style.display = "flex";
+    openCameraBtn.textContent = "✅ Photo Captured";
+    openCameraBtn.style.background = "#157a3f";
+  };
+  reader.readAsDataURL(file);
+});
+
+// Retake
+retakeBtn.addEventListener("click", () => {
+  cameraCapture.value = "";
+  wasteImageInput.value = "";
+  previewImg.src = "";
+  cameraPreview.style.display = "none";
+  openCameraBtn.textContent = "📷 Open Camera";
+  openCameraBtn.style.background = "#1b8f4a";
+  cameraCapture.click();
+});
+
+// ===== GEOLOCATION =====
+useLocationBtn.addEventListener("click", () => {
   if (!navigator.geolocation) {
     alert("Geolocation is not supported by your browser");
     return;

@@ -219,7 +219,79 @@ input[type="file"] {
   box-shadow: 0 0 0 3px rgba(27, 143, 74, 0.15);
 }
 
-/* ===== E-WASTE TEXTAREA ===== */
+
+/* ===== MOBILE CAMERA SECTION ===== */
+.mobile-camera-section {
+  display: none; /* hidden by default; shown via JS on mobile */
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.camera-note {
+  font-size: 0.78rem;
+  color: #666;
+  font-style: italic;
+}
+
+.camera-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: 2px dashed #1b8f4a;
+  background: #f0faf4;
+  color: #1b8f4a;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.camera-btn:hover,
+.camera-btn:active {
+  background: #1b8f4a;
+  color: #fff;
+}
+
+.camera-preview {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.camera-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #1b8f4a;
+}
+
+.retake-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.retake-btn:hover {
+  background: #c0392b;
+}
+
+/* On mobile, hide the default file input (camera replaces it) */
+@media (max-width: 768px) {
+  input[type="file"][name="image"] {
+    display: none;
+  }
+}
+
 textarea[name="waste_description"] {
   resize: vertical;
   min-height: 90px;

@@ -78,8 +78,28 @@
       <input
         type="file"
         name="image"
+        id="wasteImageInput"
         accept="image/*"
       >
+
+      <!-- Mobile-only camera button -->
+      <div class="mobile-camera-section" id="mobileCameraSection">
+        <button type="button" id="openCameraBtn" class="camera-btn">
+          📷 Open Camera
+        </button>
+        <span class="camera-note">📱 Mobile: Take a photo directly</span>
+        <input
+          type="file"
+          id="cameraCapture"
+          accept="image/*"
+          capture="environment"
+          style="display:none"
+        >
+        <div id="cameraPreview" class="camera-preview" style="display:none">
+          <img id="previewImg" src="" alt="Preview">
+          <button type="button" id="retakeBtn" class="retake-btn">🔄 Retake</button>
+        </div>
+      </div>
 
       <button type="submit" class="submit-btn">Submit Pickup</button>
     </form>
