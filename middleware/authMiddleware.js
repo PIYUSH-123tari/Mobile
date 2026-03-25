@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "ecoloop_jwt_secret_key_2026";
+const JWT_SECRET = process.env.JWT_SECRET || "ecoloop_jwt_secret_key_2026";
 
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;

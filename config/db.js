@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb+srv://ecoloop_user:ecoloop_pass@cluster0.rtm00qj.mongodb.net/ecoloop?appName=Cluster0");
+    const mongoURI = process.env.MONGO_URI || "mongodb+srv://ecoloop_user:ecoloop_pass@cluster0.rtm00qj.mongodb.net/ecoloop?appName=Cluster0"; // Fallback for local testing if not set
+    await mongoose.connect(mongoURI);
     console.log("MongoDB Connected to ecoloop DB");
   } catch (err) {
     console.error(err);

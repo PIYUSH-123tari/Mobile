@@ -38,8 +38,9 @@ const updatePickup = async (req, res) => {
     // Because the pickup details changed, the old assignment is now invalid
     if (existing.status === "assigned" || existing.status === "collected") {
       try {
+        const adminApiUrl = process.env.ADMIN_API_URL || "http://localhost:3500";
         const cascadeRes = await fetch(
-          `http://localhost:3500/api/assignment/delete-by-pickup/${existing._id}`,
+          `${adminApiUrl}/api/assignment/delete-by-pickup/${existing._id}`,
           { method: "DELETE" }
         );
         if (cascadeRes.ok) {

@@ -15,7 +15,8 @@ const deletePickup = async (req, res) => {
     // 1. Cascade delete Assignment + Collected on Admin server (port 3500)
     //    Uses the delete-by-pickup route we just added
     try {
-      await fetch(`http://localhost:3500/api/assignment/delete-by-pickup/${existing._id}`, {
+      const adminApiUrl = process.env.ADMIN_API_URL || "http://localhost:3500";
+      await fetch(`${adminApiUrl}/api/assignment/delete-by-pickup/${existing._id}`, {
         method: "DELETE"
       });
     } catch (cascadeErr) {
