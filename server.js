@@ -34,7 +34,7 @@ app.use("/pickup/update", require("./router/pickupUpdateRoutes"));
 app.use("/pickup/delete", require("./router/pickupDeleteRoutes"));
 app.use("/userProfile", require("./router/userProfileRoutes"));
 app.use("/category", require("./router/categoryRoutes"));
-app.use("/reward", require("./router/rewardRoutes"));
+app.use("/reward", require("./router/Rewardroutes"));
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
