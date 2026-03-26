@@ -64,7 +64,7 @@ const updateUserProfile = async (req, res) => {
     };
 
     if (req.file) {
-      updatedData.photo = req.file.filename;
+      updatedData.photo = req.file.path;
     }
 
     const user = await User.findOneAndUpdate(

@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (user.photo) {
     document.querySelector(".avatar").src =
-      `/uploads/${user.photo}`;
+      user.photo.startsWith("http") ? user.photo : `/uploads/${user.photo}`;
   }
 
   // SET READONLY INITIALLY

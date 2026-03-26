@@ -35,7 +35,7 @@ const createPickup = async (req, res) => {
       estimated_weight,
       pickup_address,
       preferred_date,
-      image: req.file ? `/uploads/${req.file.filename}` : null
+      image: req.file ? req.file.path : null
     });
 
     await pickup.save();

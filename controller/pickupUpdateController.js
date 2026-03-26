@@ -23,7 +23,7 @@ const updatePickup = async (req, res) => {
     };
 
     if (req.file) {
-      updateData.image = `/uploads/${req.file.filename}`;
+      updateData.image = req.file.path;
     }
 
     const updated = await PickupRequest.findOneAndUpdate(
