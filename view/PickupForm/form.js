@@ -114,10 +114,9 @@ const url = editingPickupId
 
 const method = editingPickupId ? "PUT" : "POST";
 
-document.getElementById("pickupForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
+async function savePickup(isAutoSave = false) {
+  const form = document.getElementById("pickupForm");
+  const formData = new FormData(form);
 
   formData.append("userId", userId);
   formData.append("userPhone", userPhone);
@@ -134,22 +133,37 @@ document.getElementById("pickupForm").addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.message || "Something went wrong");
-      return;
+      if (!isAutoSave) alert(data.message || "Something went wrong");
+      return false;
     }
 
-    alert(data.message);
-
-    sessionStorage.removeItem("editPickup");
-    sessionStorage.removeItem("editingPickupId");
-    e.target.reset();
-    window.location.href = "../PickupHistory/pH.html";
-
+    if (!isAutoSave) {
+      alert(data.message);
+      sessionStorage.removeItem("editPickup");
+      sessionStorage.removeItem("editingPickupId");
+      form.reset();
+      window.location.href = "../PickupHistory/pH.html";
+    }
+    return true; // Auto-save succeeded quietly
   } catch (err) {
     console.error(err);
-    alert("Server not reachable");
+    if (!isAutoSave) alert("Server not reachable");
+    return false;
   }
+}
+
+document.getElementById("pickupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await savePickup(false);
 });
+
+// Expose automatic save for global inactivity timeout watcher
+window.onAutoSave = async () => {
+  // Only auto-save if editing an existing pickup request
+  if (editingPickupId) {
+    await savePickup(true);
+  }
+};
 
 const useLocationBtn = document.getElementById("useLocationBtn");
 const pickupAddressField = document.getElementById("pickupAddress");

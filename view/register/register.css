@@ -232,6 +232,13 @@ button[type="submit"]:hover {
 }
 
 /* ===== PASSWORD VALIDATION RULES ===== */
+
+
+/* ===== HIDE PASSWORD RULES UNTIL USER TYPES ===== */
+#passwordRules {
+  display: none;
+}
+
 .password-rules {
   font-size: 0.85rem;
   margin-top: 2px;

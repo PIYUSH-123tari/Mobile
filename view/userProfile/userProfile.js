@@ -186,9 +186,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     photoInput.click();
   });
 
-  // SAVE CLICK
-  saveBtn.addEventListener("click", async () => {
-
+  // SAVE CLICK LOGIC
+  async function saveUserProfile(isAutoSave = false) {
     const formData = new FormData();
     formData.append("name", nameInput.value);
     formData.append("email", emailInput.value);
@@ -215,29 +214,46 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       rewardBalanceInput.value = `₹${(updated.user.reward_balance || 0).toFixed(2)}`;
 
-      showAlert({
-        icon: "✔",
-        iconBg: "linear-gradient(135deg,#d1fae5,#a7f3d0)",
-        iconColor: "#1b8f4a",
-        title: "Profile Updated!",
-        message: "Your profile has been updated successfully.",
-        btnText: "OK",
-        btnColor: "#1b8f4a",
-        onClose: () => location.reload()
-      });
-
+      if (!isAutoSave) {
+        showAlert({
+          icon: "✔",
+          iconBg: "linear-gradient(135deg,#d1fae5,#a7f3d0)",
+          iconColor: "#1b8f4a",
+          title: "Profile Updated!",
+          message: "Your profile has been updated successfully.",
+          btnText: "OK",
+          btnColor: "#1b8f4a",
+          onClose: () => location.reload()
+        });
+      }
+      return true;
     } else {
-      showAlert({
-        icon: "✖",
-        iconBg: "linear-gradient(135deg,#fee2e2,#fecaca)",
-        iconColor: "#c62828",
-        title: "Update Failed",
-        message: "Could not update your profile. Please try again.",
-        btnText: "Try Again",
-        btnColor: "#c62828"
-      });
+      if (!isAutoSave) {
+        showAlert({
+          icon: "✖",
+          iconBg: "linear-gradient(135deg,#fee2e2,#fecaca)",
+          iconColor: "#c62828",
+          title: "Update Failed",
+          message: "Could not update your profile. Please try again.",
+          btnText: "Try Again",
+          btnColor: "#c62828"
+        });
+      }
+      return false;
     }
+  }
+
+  saveBtn.addEventListener("click", async () => {
+    await saveUserProfile(false);
   });
+
+  // Expose automatic save for global inactivity timeout watcher
+  window.onAutoSave = async () => {
+    // Auto-save is only valid if we are in "edit" mode (saveBtn visible)
+    if (saveBtn.style.display !== "none") {
+      await saveUserProfile(true);
+    }
+  };
 
 });
 
