@@ -24,18 +24,9 @@
     window.location.href = getLoginPageUrl();
   }
 
-  const path = window.location.pathname;
-  const isHomePage = path.endsWith('/Homepage/index.html') || 
-                     path.endsWith('/Homepage/hp.html') || 
-                     path.endsWith('/Homepage/') || 
-                     path === '/' || 
-                     path === '/index.html';
-
   if (!userId || !token) {
     // If user is accessing protected routes without logging in
-    if (!isHomePage) {
-      logoutUser();
-    }
+    logoutUser();
   } else {
     // User is logged in, attach global 3-minute inactivity timeout
     let inactivityTimer;
