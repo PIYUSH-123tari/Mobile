@@ -7,7 +7,7 @@ const fileFilter = (req, file, cb) => {
   const mime = allowed.test(file.mimetype);
 
   if (ext && mime) cb(null, true);
-  else cb(new Error("Only PNG & JPEG allowed"));
+  else cb(new Error("Only PNG, JPG & JPEG allowed"));
 };
 
 module.exports = multer({
