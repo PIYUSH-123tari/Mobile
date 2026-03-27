@@ -65,7 +65,7 @@ function renderAssigned() {
       const agent = data.agent;
       // Photo served directly from Admin server at port 3500 (already working)
       const photoUrl = agent.passport_photo
-        ? `/${agent.passport_photo.replace(/\\/g, "/")}`
+        ? (agent.passport_photo.startsWith("http") ? agent.passport_photo : `/${agent.passport_photo.replace(/\\/g, "/")}`)
         : null;
 
       detailContainer.innerHTML = `
@@ -137,7 +137,7 @@ function renderCollected() {
 
       const agent = data.agent;
       const photoUrl = agent.passport_photo
-        ? `/${agent.passport_photo.replace(/\\/g, "/")}`
+        ? (agent.passport_photo.startsWith("http") ? agent.passport_photo : `/${agent.passport_photo.replace(/\\/g, "/")}`)
         : null;
 
       detailContainer.innerHTML = `
