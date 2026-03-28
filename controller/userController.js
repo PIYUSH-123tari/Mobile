@@ -46,22 +46,15 @@ const registerUser = async (req, res) => {
       region_Id: regionExists._id // ✅ STORE OBJECT ID
     });
 
-    // Send Welcome Email (non-blocking — don't fail registration if email fails)
-    try {
-      await transporter.sendMail({
-        from: "ecoloop229@gmail.com",
-        to: email,
-        subject: "Welcome to EcoLoop ♻",
-        text: `Hello ${name},
-
-Thank you for registering with EcoLoop ♻.
-Together we make the planet cleaner 🌍
-
-- Team EcoLoop`
-      });
-    } catch (emailErr) {
+    // Send Welcome Email (NON-BLOCKING — don't await, so registration is fast)
+    transporter.sendMail({
+      from: "ecoloop229@gmail.com",
+      to: email,
+      subject: "Welcome to EcoLoop ♻",
+      text: `Hello ${name},\n\nThank you for registering with EcoLoop ♻.\nTogether we make the planet cleaner 🌍\n\n- Team EcoLoop`
+    }).catch(emailErr => {
       console.warn("Welcome email failed (registration still succeeded):", emailErr.message);
-    }
+    });
 
     res.status(201).json({
       message: "User registered successfully. Please login.",

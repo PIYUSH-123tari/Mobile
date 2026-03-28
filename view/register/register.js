@@ -243,6 +243,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
   const authData = { email, password };
 
+  const submitBtn = document.getElementById("loginForm").querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Logging In...";
+
   try {
     const response = await fetch("/users/login", {
       method: "POST",
@@ -268,10 +273,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     } else {
       showFormError("loginForm", data.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
     }
 
   } catch (error) {
     showFormError("loginForm", "Error logging in: " + error.message);
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
   }
 });
 
@@ -331,6 +340,11 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
   const userData = { name, email, phone, password, region_Id };
 
+  const submitBtn = document.getElementById("signupForm").querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Creating Account...";
+
   try {
     const response = await fetch("/users/register", {
       method: "POST",
@@ -349,14 +363,21 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         clearFormError("signupForm");
          redirectedFromSignup = true;
         toggleForm("login");
+        // Re-enable button after switching to login tab
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
       }, 2000);
 
     } else {
       showFormError("signupForm", data.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
     }
 
   } catch (error) {
     showFormError("signupForm", "Error registering user: " + error.message);
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
   }
 });
 
