@@ -1,3 +1,18 @@
+// ✅ REDIRECT IF ALREADY LOGGED IN
+function checkAuthAndRedirect() {
+  if (sessionStorage.getItem("token") && sessionStorage.getItem("userId")) {
+    window.location.replace("../Homepage/index.html");
+  }
+}
+checkAuthAndRedirect();
+
+// Prevent mobile browser back-button caching from showing the login page
+window.addEventListener("pageshow", function(event) {
+  if (event.persisted) {
+    checkAuthAndRedirect();
+  }
+});
+
 // ✅ LOAD REGIONS FROM BACKEND
 window.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -268,7 +283,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       sessionStorage.setItem("region_name", data.user.region_name);
 
       setTimeout(() => {
-        window.location.href = "../Homepage/index.html";
+        window.location.replace("../Homepage/index.html");
       }, 2000);
 
     } else {
