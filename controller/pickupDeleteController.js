@@ -4,6 +4,10 @@ const PickupRequest = require("../model/PickupRequest");
 const PickupLog     = require("../model/PickupLog");
 const Manager       = require("../model/Manager"); // your admin/manager model
 
+const Assignment = require("../model/Assignment");
+const Collected = require("../model/Collected");
+const Agent = require("../model/Agent");
+
 const deletePickup = async (req, res) => {
   try {
     const existing = await PickupRequest.findOne({ pickupRequest_id: req.params.id })
@@ -12,13 +16,20 @@ const deletePickup = async (req, res) => {
 
     if (!existing) return res.status(404).json({ message: "Pickup not found" });
 
-    // 1. Cascade delete Assignment + Collected on Admin server (port 3500)
-    //    Uses the delete-by-pickup route we just added
+    // 1. Cascade delete Assignment + Collected directly in db
     try {
-      const adminApiUrl = process.env.ADMIN_API_URL || "http://localhost:3500";
-      await fetch(`${adminApiUrl}/api/assignment/delete-by-pickup/${existing._id}`, {
-        method: "DELETE"
-      });
+      const assignment = await Assignment.findOne({ pickupRequest: existing._id });
+      if (assignment) {
+        const collectedExists = await Collected.findOne({ assignment: assignment._id });
+        await Collected.deleteOne({ assignment: assignment._id });
+        await Assignment.findByIdAndDelete(assignment._id);
+        
+        if (!collectedExists) {
+          await Agent.findByIdAndUpdate(assignment.agent, {
+            $inc: { assigned_pending_order: -1 }
+          });
+        }
+      }
     } catch (cascadeErr) {
       console.warn("Could not cascade delete assignment (may not exist):", cascadeErr.message);
     }

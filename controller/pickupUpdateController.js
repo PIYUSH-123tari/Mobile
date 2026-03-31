@@ -34,19 +34,29 @@ const updatePickup = async (req, res) => {
 
     if (!updated) return res.status(404).json({ message: "Pickup not found" });
 
+const Assignment = require("../model/Assignment");
+const Collected = require("../model/Collected");
+const Agent = require("../model/Agent");
+
     // ── If pickup is already assigned, cascade delete assignment + collected ──
     // Because the pickup details changed, the old assignment is now invalid
     if (existing.status === "assigned" || existing.status === "collected") {
       try {
-        const adminApiUrl = process.env.ADMIN_API_URL || "http://localhost:3500";
-        const cascadeRes = await fetch(
-          `${adminApiUrl}/api/assignment/delete-by-pickup/${existing._id}`,
-          { method: "DELETE" }
-        );
-        if (cascadeRes.ok) {
-          // Reset status back to pending since assignment is gone
-          await PickupRequest.findByIdAndUpdate(existing._id, { status: "pending" });
+        const assignment = await Assignment.findOne({ pickupRequest: existing._id });
+        if (assignment) {
+          const collectedExists = await Collected.findOne({ assignment: assignment._id });
+          await Collected.deleteOne({ assignment: assignment._id });
+          await Assignment.findByIdAndDelete(assignment._id);
+          
+          if (!collectedExists) {
+            await Agent.findByIdAndUpdate(assignment.agent, {
+              $inc: { assigned_pending_order: -1 }
+            });
+          }
         }
+        // Reset status back to pending since assignment is gone
+        await PickupRequest.findByIdAndUpdate(existing._id, { status: "pending" });
+        
       } catch (cascadeErr) {
         console.warn("Could not cascade delete assignment on update:", cascadeErr.message);
       }
