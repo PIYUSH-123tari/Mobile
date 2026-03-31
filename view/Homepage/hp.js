@@ -48,6 +48,22 @@ if (userId) {
     }
   });
 
+  // Back button logout logic for mobile
+  history.pushState(null, null, location.href);
+  window.addEventListener("popstate", async function () {
+    const token = sessionStorage.getItem("token");
+    sessionStorage.clear();
+
+    await fetch("/users/logout", {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    });
+
+    window.location.href = "../register/register.html";
+  });
+
 } else {
 
   // =========================

@@ -1,4 +1,4 @@
-// Ecoloop/controller/pickupDeleteController.js
+// EcoLoop/controller/pickupDeleteController.js
 
 const PickupRequest = require("../model/PickupRequest");
 const PickupLog     = require("../model/PickupLog");

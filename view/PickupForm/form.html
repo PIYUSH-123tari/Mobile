@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pickup Request</title>
@@ -14,7 +12,7 @@
     </button>
     <div class="logo-area">
       <div class="logo-icon">♻</div>
-      <div class="logo-text">ECO<span>Loop</span></div>
+      <div class="logo-text"><span class="eco">Eco</span><span class="loop">Loop</span></div>
     </div>
   </div>
 
@@ -24,42 +22,23 @@
     <form id="pickupForm" enctype="multipart/form-data">
 
       <label>additional Phone Number</label>
-      <input
-        type="tel"
-        name="additional_phone_no"
-        placeholder="Enter your additional phone number"
-        
-      >
+      <input type="tel" name="additional_phone_no" placeholder="Enter your additional phone number">
 
       <label>Select Category</label>
-<select name="category" id="categorySelect" required>
+<select name="category" id="categorySelect" required="">
   <option value="">Loading categories...</option>
 </select>
 
 <label>Describe Your E-Waste</label>
-<textarea
-  name="waste_description"
-  placeholder="Describe item condition, quantity, brand, damage etc."
-  required
-></textarea>
+<textarea name="waste_description" placeholder="Describe item condition, quantity, brand, damage etc." required=""></textarea>
 
       <label>Estimated Weight (kg)</label>
-      <input
-        type="number"
-        name="estimated_weight"
-        placeholder="Approx weight in kg"
-        required
-      >
+      <input type="number" name="estimated_weight" placeholder="Approx weight in kg" required="" min="0" step="any">
 
    <label>Pickup Address</label>
 
 <div class="address-wrapper">
-  <textarea
-    name="pickup_address"
-    id="pickupAddress"
-    placeholder="Enter complete pickup address OR use options below"
-    required
-  ></textarea>
+  <textarea name="pickup_address" id="pickupAddress" placeholder="Enter complete pickup address OR use options below" required=""></textarea>
 
   <button type="button" id="useLocationBtn" class="location-btn">
     📍 Use My Location
@@ -68,22 +47,12 @@
 
 
       <label>Preferred Date</label>
-      <input
-        type="date"
-        name="preferred_date"
-        required
-      >
+      <input type="date" name="preferred_date" required="">
 
       <label>Waste Image</label>
 
       <!-- Desktop: standard file input -->
-      <input
-        type="file"
-        name="image"
-        id="wasteImageInput"
-        accept="image/*"
-        class="desktop-file-input"
-      >
+      <input type="file" name="image" id="wasteImageInput" accept="image/*" class="desktop-file-input">
 
       <!-- Mobile: camera OR gallery options -->
       <div class="mobile-camera-section" id="mobileCameraSection">
@@ -114,5 +83,5 @@
 
   <script src="../authGuard.js"></script>
   <script src="form.js"></script>
-</body>
-</html>
+
+</body></html>

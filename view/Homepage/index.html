@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECOLoop - Home</title>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoLoop - Home</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="hp.css" />
+  <link rel="stylesheet" href="hp.css">
 
   <!-- Icons (Font Awesome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -18,7 +16,7 @@
   <header class="navbar">
   <div class="logo-area">
     <div class="logo-icon">♻</div>
-    <div class="logo-text">ECO<span>Loop</span></div>
+    <div class="logo-text"><span class="eco">Eco</span><span class="loop">Loop</span></div>
   </div>
 
   <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
@@ -42,12 +40,12 @@
       </div>
 
       <h1>
-        Recycle Smart.<br />
+        Recycle Smart.<br>
         Protect the Planet.
       </h1>
 
       <p>
-        ECOLoop makes it easy to dispose of your electronic waste responsibly.
+        EcoLoop makes it easy to dispose of your electronic waste responsibly.
         Schedule a pickup, earn eco-points, and contribute to a greener future.
       </p>
 
@@ -67,14 +65,14 @@
       <p class="section-desc">
         Electronic waste (e-waste) refers to discarded electrical or electronic devices.
         Improper disposal of e-waste leads to toxic chemicals contaminating soil and water.
-        ECOLoop helps you dispose of e-waste safely while earning rewards!
+        EcoLoop helps you dispose of e-waste safely while earning rewards!
       </p>
 
       <div class="chip-wrap">
         <div class="chip"><i class="fa-solid fa-check"></i> Mobile Phones</div>
-        <div class="chip"><i class="fa-solid fa-check"></i> Laptops & Computers</div>
+        <div class="chip"><i class="fa-solid fa-check"></i> Laptops &amp; Computers</div>
         <div class="chip"><i class="fa-solid fa-check"></i> Batteries</div>
-        <div class="chip"><i class="fa-solid fa-check"></i> Chargers & Cables</div>
+        <div class="chip"><i class="fa-solid fa-check"></i> Chargers &amp; Cables</div>
         <div class="chip"><i class="fa-solid fa-check"></i> Printers</div>
         <div class="chip"><i class="fa-solid fa-check"></i> Household Electronics</div>
       </div>
@@ -82,11 +80,11 @@
     </div>
   </section>
 
-  <!-- HOW ECOLoop WORKS -->
+  <!-- HOW EcoLoop WORKS -->
   <section class="section">
     <div class="container">
 
-      <h2>How ECOLoop Works</h2>
+      <h2>How EcoLoop Works</h2>
       <p class="section-desc">
         Our simple process makes e-waste recycling accessible for everyone.
       </p>
@@ -126,32 +124,46 @@
     </div>
   </section>
 
-  <!-- STATS SECTION -->
-  <section class="stats">
-    <div class="container stats-grid">
-
-      <div class="stat-box">
-        <h3>500+</h3>
-        <p>Pickups Completed</p>
+  <!-- RECYCLING VIDEOS SECTION -->
+  <section class="section light" id="videos-section">
+    <div class="container">
+      <h2 style="text-align: center;">Learn About E-Waste Recycling</h2>
+      <p class="section-desc" style="text-align: center;">Watch these informative videos to understand the importance of proper e-waste disposal.</p>
+      
+      <div class="video-grid" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+        <div class="video-wrapper" style="flex: 1 1 300px; max-width: 400px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <iframe width="100%" height="250" src="https://www.youtube.com/embed/mleQVA1Vjq4" title="E-waste recycling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper" style="flex: 1 1 300px; max-width: 400px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <iframe width="100%" height="250" src="https://www.youtube.com/embed/pr1zKpXZKGY" title="E-waste overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper" style="flex: 1 1 300px; max-width: 400px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <iframe width="100%" height="250" src="https://www.youtube.com/embed/sWJ_vAkiw8g" title="How to recycle electronics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
-
-      <div class="stat-box">
-        <h3>2.5 Tons</h3>
-        <p>E-Waste Recycled</p>
-      </div>
-
-      <div class="stat-box">
-        <h3>1000+</h3>
-        <p>Happy Users</p>
-      </div>
-
-      <div class="stat-box">
-        <h3>50+</h3>
-        <p>Collection Points</p>
-      </div>
-
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer style="background-color: #f9f9f9; padding: 40px 20px; text-align: center; border-top: 1px solid #eaeaea; margin-top: 30px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+      
+      <div class="footer-contact" style="font-size: 1.1rem; color: #333;">
+        <p style="margin: 5px 0;"><i class="fa-solid fa-phone" style="color: #2E7D32;"></i> <strong>Region Admin:</strong> +91 98765 43210</p>
+        <p style="margin: 5px 0;"><i class="fa-solid fa-envelope" style="color: #2E7D32;"></i> <strong>Email:</strong> <a href="mailto:ecoloop229@gmail.com" style="color: #2E7D32; text-decoration: none;">ecoloop229@gmail.com</a></p>
+      </div>
+
+      <div class="footer-socials" style="display: flex; gap: 25px; font-size: 1.8rem; margin-top: 10px;">
+        <a href="https://facebook.com" target="_blank" class="social-icon" style="color: #3b5998; text-decoration: none;" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-icon" style="color: #E1306C; text-decoration: none;" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-icon" style="color: #FF0000; text-decoration: none;" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+        &copy; 2026 EcoLoop. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
   <!-- CTA SECTION
   <section class="section light">
@@ -176,7 +188,8 @@
 
   <!-- JS -->
   <script src="hp.js"></script>
-</body>
-</html>
 
 
+
+
+</body></html>

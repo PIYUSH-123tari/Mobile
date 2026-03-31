@@ -1,5 +1,5 @@
 // model/PickupLog.js
-// Place in BOTH Ecoloop/model/ and ADMIN/models/
+// Place in BOTH EcoLoop/model/ and ADMIN/models/
 
 const mongoose = require("mongoose");
 
