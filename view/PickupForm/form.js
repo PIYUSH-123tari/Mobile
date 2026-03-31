@@ -336,14 +336,29 @@ useLocationBtn.addEventListener("click", () => {
     },
 
     (error) => {
-      alert("Location permission denied or unavailable");
+      let errorMessage = "Location permission denied or unavailable";
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessage = "Location permission denied. Please allow location access in your browser settings.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Location information is unavailable. Please ensure your device's location services (GPS) are turned on.";
+          break;
+        case error.TIMEOUT:
+          errorMessage = "Location request timed out. Please try again or type your address manually.";
+          break;
+        default:
+          errorMessage = "An unknown error occurred while detecting location.";
+          break;
+      }
+      alert(errorMessage);
       useLocationBtn.textContent = "📍 Use My Location";
     },
 
     // 🔥 IMPORTANT: High Accuracy Options
     {
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: 15000,
       maximumAge: 0
     }
   );
