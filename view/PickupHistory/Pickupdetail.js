@@ -2,6 +2,15 @@ const detailContainer = document.getElementById("detailContainer");
 const pickup = JSON.parse(sessionStorage.getItem("viewPickup"));
 const token = sessionStorage.getItem("token");
 
+function formatAddress(address) {
+  if (!address) return "-";
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  let formatted = address.replace(urlRegex, function(url) {
+    return `<a href="${url}" target="_blank" style="color: #157a3f; text-decoration: underline; font-weight: bold;">View on Map</a>`;
+  });
+  return formatted.replace(/\n/g, '<br>');
+}
+
 if (!pickup) {
   detailContainer.innerHTML = "<p>No pickup data found.</p>";
 } else {
@@ -40,7 +49,7 @@ function renderPending() {
         <p><b>Category:</b> ${pickup.category ? pickup.category.category_name : "-"}</p>
         <p><b>Waste Description:</b> ${pickup.waste_description}</p>
         <p><b>Estimated Weight:</b> ${pickup.estimated_weight} kg</p>
-        <p><b>Pickup Address:</b> ${pickup.pickup_address}</p>
+        <p><b>Pickup Address:</b> ${formatAddress(pickup.pickup_address)}</p>
         <p><b>Preferred Date:</b> ${new Date(pickup.preferred_date).toDateString()}</p>
       </div>
       <p class="pending-note">Our team will assign an agent shortly. Please keep your phone reachable.</p>
@@ -101,7 +110,7 @@ function renderAssigned() {
             <p><b>Category:</b> ${pickup.category ? pickup.category.category_name : "-"}</p>
             <p><b>Waste Description:</b> ${pickup.waste_description}</p>
             <p><b>Estimated Weight:</b> ${pickup.estimated_weight} kg</p>
-            <p><b>Pickup Address:</b> ${pickup.pickup_address}</p>
+            <p><b>Pickup Address:</b> ${formatAddress(pickup.pickup_address)}</p>
           </div>
         </div>
 
@@ -174,7 +183,7 @@ function renderCollected() {
             <h3>Your Original Request</h3>
             <p><b>Waste Description:</b> ${pickup.waste_description}</p>
             <p><b>Estimated Weight:</b> ${pickup.estimated_weight} kg</p>
-            <p><b>Pickup Address:</b> ${pickup.pickup_address}</p>
+            <p><b>Pickup Address:</b> ${formatAddress(pickup.pickup_address)}</p>
             <p><b>Preferred Date:</b> ${new Date(pickup.preferred_date).toDateString()}</p>
           </div>
 

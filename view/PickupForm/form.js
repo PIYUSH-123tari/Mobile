@@ -6,6 +6,15 @@ const imageInput = document.querySelector("input[name='image']");
 const editData = sessionStorage.getItem("editPickup");
 const editingPickupId = sessionStorage.getItem("editingPickupId");
 
+const preferredDateInput = document.querySelector("input[name='preferred_date']");
+if (preferredDateInput) {
+  const todayObj = new Date();
+  // Adjust for local timezone date
+  const yyyy = todayObj.getFullYear();
+  const mm = String(todayObj.getMonth() + 1).padStart(2, '0');
+  const dd = String(todayObj.getDate()).padStart(2, '0');
+  preferredDateInput.setAttribute("min", `${yyyy}-${mm}-${dd}`);
+}
 
 async function loadCategories(selectedId = null) {
   try {
@@ -74,10 +83,10 @@ if (editingPickupId) {
   backBtn.style.opacity = "0.5";
   backBtn.style.cursor = "not-allowed";
   backBtn.onclick = null; // disable navigation
-   imageInput.required = false;
+  imageInput.required = false;
 
 }
-else{
+else {
   imageInput.required = true;//for create mode
 }
 
@@ -286,19 +295,19 @@ useLocationBtn.addEventListener("click", () => {
 
         await new Promise(resolve => setTimeout(resolve, 800));
         const response = await fetch(
-  `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`,
-  {
-    headers: {
-      "Accept": "application/json"
-    }
-  }
-);
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`,
+          {
+            headers: {
+              "Accept": "application/json"
+            }
+          }
+        );
 
-if (!response.ok) {
-  throw new Error("API Error");
-}
+        if (!response.ok) {
+          throw new Error("API Error");
+        }
 
-const data = await response.json();
+        const data = await response.json();
 
         if (data.address) {
           const area =
@@ -313,9 +322,9 @@ const data = await response.json();
           const country = data.address.country || "";
 
           pickupAddressField.value =
-            `${area}, ${district}, ${state}, ${country}`;
+            `${area}, ${district}, ${state}, ${country}\n📍 Map Location: https://maps.google.com/?q=${lat},${lon}`;
         } else {
-          pickupAddressField.value = `Lat: ${lat}, Lon: ${lon}`;
+          pickupAddressField.value = `Lat: ${lat}, Lon: ${lon}\n📍 Map Location: https://maps.google.com/?q=${lat},${lon}`;
         }
 
       } catch (error) {
